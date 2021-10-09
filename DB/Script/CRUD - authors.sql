@@ -1,7 +1,12 @@
+--======STORED PROCEDURES FOR AUTHORS TABLE=======
 USE libreria_esau;
 GO
 
-
+-- =============================================
+-- VIEW SHOW_ERRORS
+-- Description: It shows the errors when executing transactions
+-- Usage: SELECT * FROM SHOW_ERRORS
+-- =============================================
 CREATE OR ALTER VIEW SHOW_ERRORS
 AS 
 SELECT SUSER_SNAME() suser_name,
@@ -16,7 +21,11 @@ SELECT SUSER_SNAME() suser_name,
 
 GO
 
-
+-- =============================================
+-- Procedure spInsertAuthor
+-- Description: Insert a new author
+-- Usage: XEC spInsertAuthor 'Jorge Luis Borjes','Argentine';
+-- =============================================
 CREATE OR ALTER PROCEDURE spInsertAuthor(
 	@name varchar(50),
 	@nationality varchar(50)
@@ -38,7 +47,11 @@ END
 
 GO
 
-
+-- =============================================
+-- Procedure spSelectAllAuthors
+-- Description: Select all authors
+-- Usage: SELECT * FROM spSelectAllAuthors;
+-- =============================================
 CREATE OR ALTER PROCEDURE spSelectAllAuthors
 AS
 BEGIN
@@ -48,7 +61,11 @@ END
 
 GO
 
-
+-- =============================================
+-- Procedure spUpdateAuthorById
+-- Description: Update an author by id
+-- Usage: EXEC spUpdateAuthorById @id_author = 3, @name='Stephen King modificado', @nationality='MEXICAN';
+-- =============================================
 CREATE OR ALTER PROCEDURE spUpdateAuthorById(
 	@id_author INT,
 	@name VARCHAR(50),
@@ -71,7 +88,11 @@ END
 
 GO
 
-
+-- =============================================
+-- Procedure spDeleteAuthorById
+-- Description: Delete an author by id
+-- Usage: EXEC spDeleteAuthorById @id_author = 16;
+-- =============================================
 CREATE OR ALTER PROCEDURE spDeleteAuthorById(
 	@id_author INT
 )

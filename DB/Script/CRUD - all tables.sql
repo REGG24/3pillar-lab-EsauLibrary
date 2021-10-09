@@ -1,7 +1,12 @@
+--======STORED PROCEDURES FOR ALL TABLES=======
 USE libreria_esau;
 GO
 
-
+-- =============================================
+-- VIEW SHOW_ERRORS
+-- Description: It shows the errors when executing transactions
+-- Usage: SELECT * FROM SHOW_ERRORS
+-- =============================================
 CREATE OR ALTER VIEW SHOW_ERRORS
 AS 
 SELECT SUSER_SNAME() suser_name,
@@ -17,7 +22,13 @@ SELECT SUSER_SNAME() suser_name,
 GO
 
 
--------------------------------------------------------client procedures
+--======STORED PROCEDURES FOR CLIENTS TABLE=======
+
+-- =============================================
+-- Procedure spInsertClient
+-- Description: Insert a new client
+-- Usage: EXEC spInsertClient 'Roberto','3418787461','Guanatos' ;
+-- =============================================
 CREATE OR ALTER PROCEDURE spInsertClient(
 	@name varchar(50),
 	@phone varchar(13),
@@ -40,7 +51,11 @@ END
 
 GO
 
-
+-- =============================================
+-- Procedure spSelectAllClients
+-- Description: Select all clients
+-- Usage: SELECT * FROM spSelectAllClients;
+-- =============================================
 CREATE OR ALTER PROCEDURE spSelectAllClients
 AS
 BEGIN
@@ -50,7 +65,11 @@ END
 
 GO
 
-
+-- =============================================
+-- Procedure spUpdateClientById
+-- Description: Update a client by id
+-- Usage: EXEC spUpdateClientById @id_client = 5, @name='Fernando modificado', @phone='3211233366', @address='Yucatan';
+-- =============================================
 CREATE OR ALTER PROCEDURE spUpdateClientById(
 	@id_client INT,
 	@name VARCHAR(50),
@@ -74,7 +93,11 @@ END
 
 GO
 
-
+-- =============================================
+-- Procedure spDeleteClientById
+-- Description: Delete a client by id
+-- Usage: EXEC spDeleteClientById @id_client = 32;
+-- =============================================
 CREATE OR ALTER PROCEDURE spDeleteClientById(
 	@id_client INT
 )
@@ -96,7 +119,13 @@ END
 GO
 
 
---------------------------------------------------employee procedures
+--======STORED PROCEDURES FOR EMPLOYEES TABLE=======
+
+-- =============================================
+-- Procedure spInsertEmployee
+-- Description: Insert a new employee
+-- Usage: EXEC spInsertEmployee 'Ignacio','3418787460','Guanatos',5000.00 ;
+-- =============================================
 CREATE OR ALTER PROCEDURE spInsertEmployee(
 	@name varchar(50),
 	@phone varchar(13),
@@ -120,7 +149,11 @@ END
 
 GO
 
-
+-- =============================================
+-- Procedure spSelectAllEmployees
+-- Description: Select all employees
+-- Usage: SELECT * FROM spSelectAllEmployees;
+-- =============================================
 CREATE OR ALTER PROCEDURE spSelectAllEmployees
 AS
 BEGIN
@@ -130,7 +163,11 @@ END
 
 GO
 
-
+-- =============================================
+-- Procedure spUpdateEmployeeById
+-- Description: Update an employee by id
+-- Usage: EXEC spUpdateEmployeeById @id_employee = 3, @name='LUIS MODIFICADO', @phone='3331239988', @address='Guanatos', @salary=6000.00;
+-- =============================================
 CREATE OR ALTER PROCEDURE spUpdateEmployeeById(
 	@id_employee INT,
 	@name VARCHAR(50),
@@ -155,7 +192,11 @@ END
 
 GO
 
-
+-- =============================================
+-- Procedure spDeleteEmployeeById
+-- Description: Delete an enployee by id
+-- Usage: EXEC spDeleteEmployeeById @id_employee = 23;
+-- =============================================
 CREATE OR ALTER PROCEDURE spDeleteEmployeeById(
 	@id_employee INT
 )
@@ -177,7 +218,13 @@ END
 GO
 
 
------------------------------------------------authors procedures
+--======STORED PROCEDURES FOR AUTHORS TABLE=======
+
+-- =============================================
+-- Procedure spInsertAuthor
+-- Description: Insert a new author
+-- Usage: XEC spInsertAuthor 'Jorge Luis Borjes','Argentine';
+-- =============================================
 CREATE OR ALTER PROCEDURE spInsertAuthor(
 	@name varchar(50),
 	@nationality varchar(50)
@@ -199,7 +246,11 @@ END
 
 GO
 
-
+-- =============================================
+-- Procedure spSelectAllAuthors
+-- Description: Select all authors
+-- Usage: SELECT * FROM spSelectAllAuthors;
+-- =============================================
 CREATE OR ALTER PROCEDURE spSelectAllAuthors
 AS
 BEGIN
@@ -208,7 +259,11 @@ END
 
 
 GO
-
+-- =============================================
+-- Procedure spUpdateAuthorById
+-- Description: Update an author by id
+-- Usage: EXEC spUpdateAuthorById @id_author = 3, @name='Stephen King modificado', @nationality='MEXICAN';
+-- =============================================
 
 CREATE OR ALTER PROCEDURE spUpdateAuthorById(
 	@id_author INT,
@@ -232,7 +287,11 @@ END
 
 GO
 
-
+-- =============================================
+-- Procedure spDeleteAuthorById
+-- Description: Delete an author by id
+-- Usage: EXEC spDeleteAuthorById @id_author = 16;
+-- =============================================
 CREATE OR ALTER PROCEDURE spDeleteAuthorById(
 	@id_author INT
 )
@@ -253,7 +312,13 @@ END
 
 GO
 
------------------------------------------------books procedures
+--======STORED PROCEDURES FOR BOOKS TABLE=======
+
+-- =============================================
+-- Procedure spInsertBook
+-- Description: Insert a new book
+-- Usage: EXEC spInsertBook 'The lord of the flies','The book focuses on a group of British boys stranded on an uninhabited island and their disastrous attempt to govern themselves',200.00, 5, 2;
+-- =============================================
 CREATE OR ALTER PROCEDURE spInsertBook(
 	@name varchar(50),
 	@description varchar(500),
@@ -277,7 +342,11 @@ END
 
 GO
 
-
+-- =============================================
+-- Procedure spSelectAllBooks
+-- Description: Select all books
+-- Usage: SELECT * FROM spSelectAllBooks;
+-- =============================================
 CREATE OR ALTER PROCEDURE spSelectAllBooks
 AS
 BEGIN
@@ -287,7 +356,11 @@ END
 
 GO
 
-
+-- =============================================
+-- Procedure spUpdateBookById
+-- Description: Update a book by id
+-- Usage: EXEC spUpdateBookById @id_book = 4, @name='Mr. Mercedes modificado', @description='Description modified', @price=800.00, @stock=1, @id_author=NULL;
+-- =============================================
 CREATE OR ALTER PROCEDURE spUpdateBookById(
 	@id_book INT,
 	@name VARCHAR(50),
@@ -311,7 +384,11 @@ END
 
 GO
 
-
+-- =============================================
+-- Procedure spDeleteBookById
+-- Description: Delete a book by id
+-- Usage: EXEC spDeleteBookById @id_book = 16;
+-- =============================================
 CREATE OR ALTER PROCEDURE spDeleteBookById(
 	@id_book INT
 )
@@ -331,7 +408,13 @@ END
 GO
 
 
------------------------------------------------loans procedures
+--======STORED PROCEDURES FOR LOANS TABLE=======
+
+-- =============================================
+-- Procedure spInsertLoan
+-- Description: Insert a new loan
+-- Usage: EXEC spInsertLoan 2, 1, 2, '2021-10-07';
+-- =============================================
 CREATE OR ALTER PROCEDURE spInsertLoan(
 	@id_book INT,
 	@id_employee INT,
@@ -355,7 +438,11 @@ END
 
 GO
 
-
+-- =============================================
+-- Procedure spSelectAllLoans
+-- Description: Select all loans
+-- Usage: SELECT * FROM spSelectAllLoans;
+-- =============================================
 CREATE OR ALTER PROCEDURE spSelectAllLoans
 AS
 BEGIN
@@ -365,7 +452,11 @@ END
 
 GO
 
-
+-- =============================================
+-- Procedure spUpdateLoanById
+-- Description: Update a loan by id
+-- Usage: EXEC spUpdateLoanById @id_loan=15, @id_book = 4, @id_employee = 2, @id_client=3, @date = '2000-10-07';
+-- =============================================
 CREATE OR ALTER PROCEDURE spUpdateLoanById(
 	@id_loan INT,
 	@id_book INT,
@@ -390,7 +481,11 @@ END
 
 GO
 
-
+-- =============================================
+-- Procedure spDeleteLoanById
+-- Description: Delete a loan by id
+-- Usage: EXEC spDeleteLoanById @id_loan = 16;
+-- =============================================
 CREATE OR ALTER PROCEDURE spDeleteLoanById(
 	@id_loan INT
 )
@@ -412,7 +507,12 @@ END
 GO
 
 
------------------------------------------------returnss procedures
+--======STORED PROCEDURES FOR RETURNSS TABLE=======
+-- =============================================
+-- Procedure spInsertReturn
+-- Description: Insert a new return
+-- Usage: EXEC spInsertReturn 10,'2021-10-07';
+-- =============================================
 CREATE OR ALTER PROCEDURE spInsertReturn(
 	@id_loan INT,
 	@date DATE
@@ -434,7 +534,11 @@ END
 
 GO
 
-
+-- =============================================
+-- Procedure sspSelectAllReturns
+-- Description: Select all returns
+-- Usage: SELECT * FROM spSelectAllReturns;
+-- =============================================
 CREATE OR ALTER PROCEDURE spSelectAllReturns
 AS
 BEGIN
@@ -444,7 +548,11 @@ END
 
 GO
 
-
+-- =============================================
+-- Procedure spUpdateReturnById
+-- Description: Update a return by id
+-- Usage: EXEC spUpdateReturnById @id_return=15, @date = '2000-10-07';
+-- =============================================
 CREATE OR ALTER PROCEDURE spUpdateReturnById(
 	@id_return INT,
 	@date DATE
@@ -466,7 +574,11 @@ END
 
 GO
 
-
+-- =============================================
+-- Procedure spDeleteReturnById
+-- Description: Delete a return by id
+-- Usage: EXEC spDeleteReturnById @id_return = 16;
+-- =============================================
 CREATE OR ALTER PROCEDURE spDeleteReturnById(
 	@id_return INT
 )
@@ -488,7 +600,13 @@ END
 GO
 
 
------------------------------------------------sales procedures
+--======STORED PROCEDURES FOR SALES TABLE=======
+
+-- =============================================
+-- Procedure spInsertSale
+-- Description: Insert a new sale
+-- Usage: EXEC spInsertSale 2, 1, 2, '2021-10-07';
+-- =============================================
 CREATE OR ALTER PROCEDURE spInsertSale(
 	@id_book INT,
 	@id_employee INT,
@@ -512,7 +630,11 @@ END
 
 GO
 
-
+-- =============================================
+-- Procedure pSelectAllSales
+-- Description: Select all sales
+-- Usage: SELECT * FROM pSelectAllSales;
+-- =============================================
 CREATE OR ALTER PROCEDURE spSelectAllSales
 AS
 BEGIN
@@ -522,7 +644,11 @@ END
 
 GO
 
-
+-- =============================================
+-- Procedure spUpdateSaleById
+-- Description: Update a sale by id
+-- Usage: EXEC spUpdateSaleById @id_sale=15, @id_book = 4, @id_employee = 2, @id_client=3, @date = '2000-10-07';
+-- =============================================
 CREATE OR ALTER PROCEDURE spUpdateSaleById(
 	@id_sale INT,
 	@id_book INT,
@@ -547,7 +673,11 @@ END
 
 GO
 
-
+-- =============================================
+-- Procedure spDeleteSaleById
+-- Description: Delete a sale by id
+-- Usage: EXEC spDeleteSaleById @id_sale = 16;
+-- =============================================
 CREATE OR ALTER PROCEDURE spDeleteSaleById(
 	@id_sale INT
 )

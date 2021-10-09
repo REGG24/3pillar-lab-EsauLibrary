@@ -1,7 +1,12 @@
+--======STORED PROCEDURES FOR EMPLOYEES TABLE=======
 USE libreria_esau;
 GO
 
-
+-- =============================================
+-- VIEW SHOW_ERRORS
+-- Description: It shows the errors when executing transactions
+-- Usage: SELECT * FROM SHOW_ERRORS
+-- =============================================
 CREATE OR ALTER VIEW SHOW_ERRORS
 AS 
 SELECT SUSER_SNAME() suser_name,
@@ -16,7 +21,11 @@ SELECT SUSER_SNAME() suser_name,
 
 GO
 
-
+-- =============================================
+-- Procedure spInsertEmployee
+-- Description: Insert a new employee
+-- Usage: EXEC spInsertEmployee 'Ignacio','3418787460','Guanatos',5000.00 ;
+-- =============================================
 CREATE OR ALTER PROCEDURE spInsertEmployee(
 	@name varchar(50),
 	@phone varchar(13),
@@ -40,7 +49,11 @@ END
 
 GO
 
-
+-- =============================================
+-- Procedure spSelectAllEmployees
+-- Description: Select all employees
+-- Usage: SELECT * FROM spSelectAllEmployees;
+-- =============================================
 CREATE OR ALTER PROCEDURE spSelectAllEmployees
 AS
 BEGIN
@@ -50,7 +63,11 @@ END
 
 GO
 
-
+-- =============================================
+-- Procedure spUpdateEmployeeById
+-- Description: Update an employee by id
+-- Usage: EXEC spUpdateEmployeeById @id_employee = 3, @name='LUIS MODIFICADO', @phone='3331239988', @address='Guanatos', @salary=6000.00;
+-- =============================================
 CREATE OR ALTER PROCEDURE spUpdateEmployeeById(
 	@id_employee INT,
 	@name VARCHAR(50),
@@ -75,7 +92,11 @@ END
 
 GO
 
-
+-- =============================================
+-- Procedure spDeleteEmployeeById
+-- Description: Delete an enployee by id
+-- Usage: EXEC spDeleteEmployeeById @id_employee = 23;
+-- =============================================
 CREATE OR ALTER PROCEDURE spDeleteEmployeeById(
 	@id_employee INT
 )

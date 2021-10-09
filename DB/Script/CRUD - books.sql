@@ -1,7 +1,12 @@
+--======STORED PROCEDURES FOR BOOKS TABLE=======
 USE libreria_esau;
 GO
 
-
+-- =============================================
+-- VIEW SHOW_ERRORS
+-- Description: It shows the errors when executing transactions
+-- Usage: SELECT * FROM SHOW_ERRORS
+-- =============================================
 CREATE OR ALTER VIEW SHOW_ERRORS
 AS 
 SELECT SUSER_SNAME() suser_name,
@@ -16,7 +21,11 @@ SELECT SUSER_SNAME() suser_name,
 
 GO
 
-
+-- =============================================
+-- Procedure spInsertBook
+-- Description: Insert a new book
+-- Usage: EXEC spInsertBook 'The lord of the flies','The book focuses on a group of British boys stranded on an uninhabited island and their disastrous attempt to govern themselves',200.00, 5, 2;
+-- =============================================
 CREATE OR ALTER PROCEDURE spInsertBook(
 	@name varchar(50),
 	@description varchar(500),
@@ -40,7 +49,11 @@ END
 
 GO
 
-
+-- =============================================
+-- Procedure spSelectAllBooks
+-- Description: Select all books
+-- Usage: SELECT * FROM spSelectAllBooks;
+-- =============================================
 CREATE OR ALTER PROCEDURE spSelectAllBooks
 AS
 BEGIN
@@ -50,7 +63,11 @@ END
 
 GO
 
-
+-- =============================================
+-- Procedure spUpdateBookById
+-- Description: Update a book by id
+-- Usage: EXEC spUpdateBookById @id_book = 4, @name='Mr. Mercedes modificado', @description='Description modified', @price=800.00, @stock=1, @id_author=NULL;
+-- =============================================
 CREATE OR ALTER PROCEDURE spUpdateBookById(
 	@id_book INT,
 	@name VARCHAR(50),
@@ -74,7 +91,11 @@ END
 
 GO
 
-
+-- =============================================
+-- Procedure spDeleteBookById
+-- Description: Delete a book by id
+-- Usage: EXEC spDeleteBookById @id_book = 16;
+-- =============================================
 CREATE OR ALTER PROCEDURE spDeleteBookById(
 	@id_book INT
 )

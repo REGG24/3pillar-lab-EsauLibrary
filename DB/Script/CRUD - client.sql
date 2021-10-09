@@ -1,7 +1,12 @@
+--======STORED PROCEDURES FOR EMPLOYEES TABLE=======
 USE libreria_esau;
 GO
 
-
+-- =============================================
+-- VIEW SHOW_ERRORS
+-- Description: It shows the errors when executing transactions
+-- Usage: SELECT * FROM SHOW_ERRORS
+-- =============================================
 CREATE OR ALTER VIEW SHOW_ERRORS
 AS 
 SELECT SUSER_SNAME() suser_name,
@@ -17,7 +22,11 @@ SELECT SUSER_SNAME() suser_name,
 GO
 
 
--------------------------------------------------------client procedures
+-- =============================================
+-- Procedure spInsertClient
+-- Description: Insert a new client
+-- Usage: EXEC spInsertClient 'Roberto','3418787461','Guanatos' ;
+-- =============================================
 CREATE OR ALTER PROCEDURE spInsertClient(
 	@name varchar(50),
 	@phone varchar(13),
@@ -40,7 +49,11 @@ END
 
 GO
 
-
+-- =============================================
+-- Procedure spSelectAllClients
+-- Description: Select all clients
+-- Usage: SELECT * FROM spSelectAllClients;
+-- =============================================
 CREATE OR ALTER PROCEDURE spSelectAllClients
 AS
 BEGIN
@@ -50,7 +63,11 @@ END
 
 GO
 
-
+-- =============================================
+-- Procedure spUpdateClientById
+-- Description: Update a client by id
+-- Usage: EXEC spUpdateClientById @id_client = 5, @name='Fernando modificado', @phone='3211233366', @address='Yucatan';
+-- =============================================
 CREATE OR ALTER PROCEDURE spUpdateClientById(
 	@id_client INT,
 	@name VARCHAR(50),
@@ -74,7 +91,11 @@ END
 
 GO
 
-
+-- =============================================
+-- Procedure spDeleteClientById
+-- Description: Delete a client by id
+-- Usage: EXEC spDeleteClientById @id_client = 32;
+-- =============================================
 CREATE OR ALTER PROCEDURE spDeleteClientById(
 	@id_client INT
 )
