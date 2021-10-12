@@ -11,13 +11,6 @@ in the next order(It's important to follow this order to avoid problems):
 
 DDL
 DML
-CRUD-client
-CRUD-employee
-CRUD-authors
-CRUD-books
-CRUD-loans
-CRUD-returnss
-CRUD-sales
-(You can also run the CRUD-all tables.sql to avoid run the previos 7 files)
+CRUD
 TEST or REPORTING
 
